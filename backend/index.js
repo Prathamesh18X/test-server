@@ -1,23 +1,10 @@
-const express = require("express");
-const db = require('./pizzaDB');
-const app = express();
-const pizzasRoute = require('./routes/pizzaRoutes')
-const userRoute = require('./routes/userRoutes')
+const express = require('express');
+const app = express()
+const PORT = 8000
+app.get('/home',(req,res)=>{
+    res.status(200).send("hello world")
+})
 
-app.use(express.json());
-
-
-app.get("/", (req, res) => {
-  res.send("Server working with status 200");
-});
-
-const port = 8000
-
-app.use('/api/pizzas/' , pizzasRoute)
-app.use('/api/users/' , userRoute)
-
-
-
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
+app.listen(PORT,()=>{
+    console.log('server running on port 8000');
+} )
